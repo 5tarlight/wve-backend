@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service
 class PlayerServiceImpl(private val dao: PlayerDao): PlayerService {
     override fun savePlayer(playerDto: SavePlayerDto): Boolean {
         // TODO Duplication Check
+        // TODO Encryption
 
         dao.savePlayer(
             PlayerEntity("-1", playerDto.username, playerDto.password)

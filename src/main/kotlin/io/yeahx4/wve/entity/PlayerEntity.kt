@@ -1,5 +1,6 @@
 package io.yeahx4.wve.entity
 
+import io.yeahx4.wve.dto.player.PlayerInfoDto
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -15,6 +16,18 @@ class PlayerEntity(
     @Column(name = "id")
     val playerId: String,
 
-    @Column(name = "username", unique = true, nullable = true)
-    val username: String
-) : TimeRecordEntity()
+    @Column(name = "username", unique = true, nullable = false)
+    val username: String,
+
+    @Column(name = "password", nullable = false)
+    val password: String
+) : TimeRecordEntity() {
+    fun removePassword(): PlayerInfoDto {
+        return PlayerInfoDto(
+            this.playerId,
+            this.username,
+            this.createdAt,
+            this.updatedAt,
+        )
+    }
+}

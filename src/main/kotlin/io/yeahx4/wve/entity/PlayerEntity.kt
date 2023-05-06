@@ -27,7 +27,7 @@ class PlayerEntity(
             this.playerId,
             this.username,
             this.createdAt,
-            this.updatedAt,
+            this.updatedAt
         )
     }
 }

@@ -2,6 +2,7 @@ package io.yeahx4.wve.service.impl
 
 import io.yeahx4.wve.dao.PlayerDao
 import io.yeahx4.wve.dto.player.GetPlayerByIdDto
+import io.yeahx4.wve.dto.player.GetPlayerByUsernameDto
 import io.yeahx4.wve.dto.player.PlayerInfoDto
 import io.yeahx4.wve.dto.player.SavePlayerDto
 import io.yeahx4.wve.entity.PlayerEntity
@@ -22,5 +23,9 @@ class PlayerServiceImpl(private val dao: PlayerDao): PlayerService {
 
     override fun getPlayerById(playerDto: GetPlayerByIdDto): PlayerInfoDto? {
         return dao.getPlayerByUuid(playerDto.uuid)?.removePassword()
+    }
+
+    override fun getPlayerByUsername(playerDto: GetPlayerByUsernameDto): PlayerInfoDto? {
+        return dao.getPlayerByUsername(playerDto.username)?.removePassword()
     }
 }
